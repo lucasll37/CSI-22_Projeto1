@@ -1,8 +1,6 @@
 from obj import Obj
 from window import Window
 
-teste
-
 
 class Game:
     def __init__(self):
