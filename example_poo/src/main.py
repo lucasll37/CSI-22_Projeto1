@@ -1,5 +1,7 @@
-from window import Window
 from obj import Obj
+from window import Window
+
+teste
 
 
 class Game:
