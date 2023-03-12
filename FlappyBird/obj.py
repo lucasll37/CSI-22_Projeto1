@@ -1,5 +1,6 @@
 import pygame
 
+teste
 
 class Obj(pygame.sprite.Sprite):
 
