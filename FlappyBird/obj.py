@@ -1,6 +1,5 @@
 import pygame
 
-teste
 
 class Obj(pygame.sprite.Sprite):
 
@@ -32,8 +31,6 @@ class Coin(Obj):
 
     def __init__(self, img, x, y, *groups):
         super().__init__(img, x, y, *groups)
-
-
 
         self.ticks = 0
 
@@ -76,7 +73,8 @@ class Bird(Obj):
 
     def anim(self):
         self.ticks = (self.ticks + 1) % 4
-        self.image = pygame.image.load("assets/bird" + str(self.ticks) + ".png")
+        self.image = pygame.image.load(
+            "assets/bird" + str(self.ticks) + ".png")
 
     def move(self):
 
