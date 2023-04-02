@@ -1,6 +1,6 @@
 import pygame
 from menu import Menu
-from game import Game
+from window import Game
 from gameover import GameOver
 
 
