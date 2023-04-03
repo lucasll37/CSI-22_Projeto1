@@ -44,6 +44,7 @@ class Scene1:
         self.speedBullet = 1
         self.planeMoveUp = False
         self.planeMoveDown = False
+        self.soundMeme = pygame.mixer.Sound("sounds/euvoucair.mp3")
 
 
     def moveBackground(self):
@@ -131,6 +132,7 @@ class Scene1:
             self.change_scene = True
 
         self.movePlane()
+        
         self.plane.collision(self.bullet1.group)
         self.plane.collision(self.bullet2.group)
         self.plane.collision(self.bullet3.group)
@@ -141,7 +143,12 @@ class Scene1:
         self.plane.collision(self.bullet8.group)
         self.plane.collision(self.bullet9.group)
         self.plane.collision(self.bullet10.group)
+
+        if self.time == 1000:
+            self.soundMeme.play()
+            
         self.time += 1
+
 
 
     def events(self, events):

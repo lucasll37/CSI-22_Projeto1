@@ -11,18 +11,15 @@ import random
 class SceneN:
     
     def __init__(self):
-        pass
 
-
-        
         # self.background = Obj("continua", 1, None, 0, 0)
         # self.change_scene = False
         # self.justBegin = True
-        # self.time = 0
+        self.time = 0
         # self.list_group = [self.background]
 
     def update(self):
-        pass
+        
         # if self.justBegin:
             # pygame.mixer.music.stop()
             # pygame.mixer.music.load("sounds/whatever.ogg")
@@ -32,7 +29,7 @@ class SceneN:
         # if self.time > 300:    
         #     self.change_scene = True
 
-        # self.time += 1
+        self.time += 1
 
 
     def events(self, events):
