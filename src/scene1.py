@@ -6,6 +6,11 @@ import random
 class Scene1:
     
     def __init__(self):
+        
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load("sounds/bg.ogg")
+        pygame.mixer.music.play(-1)
+
         self.background1 = Obj("background", 1, None, 0, 0)
         self.background2 = Obj("background", 1, None, 1280, 0)
         self.plane = Plane("plane", 1, None, 100, random.randrange(9, 400))

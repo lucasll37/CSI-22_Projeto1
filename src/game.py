@@ -1,11 +1,17 @@
+import pygame
 from window import Window
 from scene1 import Scene1
 from scene2 import Scene2
+from scene3 import Scene3
 
 class Game:
 
     def __init__(self, size, name):
-        self.scenes = [Scene1(), Scene1()]
+        
+        pygame.init()
+        pygame.mixer.init()
+
+        self.scenes = [Scene1(), Scene2(), Scene3()]
         self.window = Window(size, name, self.scenes)
 
     def start(self):

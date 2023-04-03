@@ -3,10 +3,15 @@ from obj import Obj
 from plane import Plane
 import random
 
-class Scene2:
+class Scene3:
     
     def __init__(self):
-        self.background = Obj("ejeta", 1, None, 0, 0)
+
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load("sounds/bg.ogg")
+        pygame.mixer.music.play(-1)
+        
+        self.background = Obj("continua", 1, None, 0, 0)
         self.change_scene = False
         self.time = 0
         self.list_group = [self.background]
@@ -14,7 +19,7 @@ class Scene2:
   
 
     def update(self):
-        if self.time > 200:    
+        if self.time > 300:    
             self.change_scene = True
 
         self.time += 1

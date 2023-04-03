@@ -3,11 +3,10 @@ import pygame
 class Window:
     
     def __init__(self, size, name, scenes):
-        pygame.init()
+        
         self.window = pygame.display.set_mode(size)
         self.title = pygame.display.set_caption(name)
         self.scenes = scenes
-        self.activeScene = None
         self.loop = True
         self.fps = pygame.time.Clock()
 
@@ -19,12 +18,16 @@ class Window:
     def update(self):
         while self.loop:
             self.fps.tick(60)
+            self.activeScene = None
             for scene in self.scenes:
                 if not scene.change_scene:
                     self.activeScene = scene
                     break
 
+            if not self.activeScene:
                 self.loop = False
+                continue
+                
 
             events = pygame.event.get()
             self.globalEvents(events)
