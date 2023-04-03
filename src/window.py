@@ -9,6 +9,7 @@ class Window:
         self.scenes = scenes
         self.activeScene = None
         self.loop = True
+        self.fps = pygame.time.Clock()
 
     def globalEvents(self, events):
         for event in events:
@@ -17,7 +18,7 @@ class Window:
             
     def update(self):
         while self.loop:
-
+            self.fps.tick(60)
             for scene in self.scenes:
                 if not scene.change_scene:
                     self.activeScene = scene

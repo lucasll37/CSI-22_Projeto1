@@ -1,23 +1,30 @@
 import pygame
 from obj import Obj
+from plane import Plane
+import random
 
-class Scene2:
+class Scene1:
     
     def __init__(self):
-        self.bg = Obj("assets/free_plane_sprite/png/background", 1, 0, 0, True)
-        self.plane = Obj("assets/free_plane_sprite/png/Plane/plane", 2, 20, 20, True)
-        self.change_scene = False
-        self.list_group = [self.bg, self.plane]
+        self.background = Obj("background", 1, None, 0, 0)
+        self.time = 0
+
+  
+
+    def update(self):
+        if self.time > 800:    
+            self.change_scene = True
+
+        self.time += 1
+
 
     def events(self, events):
         for event in events:
-            if event == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    self.change_scene = True
-
-    def update(self):
-        pass
+            pass
 
     def draw(self, window):
         for group in self.list_group:
+            if group.timeFrame:
+                group.animation()
+            
             group.group.draw(window)
