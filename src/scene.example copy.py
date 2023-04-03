@@ -13,9 +13,7 @@ class SceneN:
     def __init__(self):
         pass
 
-        # pygame.mixer.music.stop()
-        # pygame.mixer.music.load("sounds/whatever.ogg")
-        # pygame.mixer.music.play(-1)
+
         
         # self.background = Obj("continua", 1, None, 0, 0)
         # self.change_scene = False
@@ -26,6 +24,9 @@ class SceneN:
     def update(self):
         pass
         # if self.justBegin:
+            # pygame.mixer.music.stop()
+            # pygame.mixer.music.load("sounds/whatever.ogg")
+            # pygame.mixer.music.play(-1)
         #     self.justBegin = False
             
         # if self.time > 300:    
