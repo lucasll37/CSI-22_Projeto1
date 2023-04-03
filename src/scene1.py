@@ -6,10 +6,6 @@ import random
 class Scene1:
     
     def __init__(self):
-        
-        pygame.mixer.music.stop()
-        pygame.mixer.music.load("sounds/bg.ogg")
-        pygame.mixer.music.play(-1)
 
         self.background1 = Obj("background", 1, None, 0, 0)
         self.background2 = Obj("background", 1, None, 1280, 0)
@@ -25,6 +21,7 @@ class Scene1:
         self.bullet9 = Obj("bullet", 5, 20, 1280, 620)
         self.bullet10 = Obj("bullet", 5, 20, 1280, 620)
         self.change_scene = False
+        self.justBegin = True
         self.time = 0
         self.list_group = [
             self.background1,
@@ -120,11 +117,17 @@ class Scene1:
 
 
     def update(self):
+        if self.justBegin:
+            pygame.mixer.music.stop()
+            pygame.mixer.music.load("sounds/plane.mp3")
+            pygame.mixer.music.play(-1)
+            self.justBegin = False
+
         self.moveBackground()
         if self.time > 500:    
             self.moveBullets()
 
-        if self.time > 800:    
+        if self.time > 1100:    
             self.change_scene = True
 
         self.movePlane()

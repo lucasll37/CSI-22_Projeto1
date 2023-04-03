@@ -6,11 +6,7 @@ import random
 class Scene3:
     
     def __init__(self):
-
-        pygame.mixer.music.stop()
-        pygame.mixer.music.load("sounds/bg.ogg")
-        pygame.mixer.music.play(-1)
-        
+         
         self.background = Obj("continua", 1, None, 0, 0)
         self.change_scene = False
         self.time = 0
@@ -19,7 +15,7 @@ class Scene3:
   
 
     def update(self):
-        if self.time > 300:    
+        if self.time > 350:    
             self.change_scene = True
 
         self.time += 1
