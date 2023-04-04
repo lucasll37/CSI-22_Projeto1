@@ -5,6 +5,7 @@ from scene1 import Scene1
 from scene2 import Scene2
 from scene3 import Scene3
 from scene4 import Scene4
+from scene5 import Scene5
 
 class Game:
 
@@ -13,7 +14,8 @@ class Game:
         pygame.init()
         pygame.mixer.init()
 
-        self.scenes = [Scene0(), Scene1(), Scene2(), Scene4()]
+        self.scenes = [Scene0(), Scene1(), Scene2(), Scene4(), Scene5()]
+        self.gameStatus = "onPlay"
         self.window = Window(size, name, self.scenes)
 
     def start(self):

@@ -2,27 +2,22 @@ import pygame
 from obj import Obj
 import random
 
-############################################################################################
-#
-# ADICIONAR "SceneN()" na lista armazenada na variável "self.scenes" do arquivo "game.py"
-#
-############################################################################################
 
-class SceneN:
+class Scene5:
     
     def __init__(self):
 
-        # self.background = Obj("continua", 1, None, 0, 0)
+        self.background = Obj("continua", 1, None, 0, 0)
         self.change_scene = False
         self.justBegin = True
         self.time = 0
-        # self.list_group = [self.background]
+        self.list_group = [self.background]
 
     def update(self):
         
         if self.justBegin:
             pygame.mixer.music.stop()
-            pygame.mixer.music.load("sounds/whatever.ogg")
+            pygame.mixer.music.load("sounds/euvoucair.mp3")
             pygame.mixer.music.play(-1)
             self.justBegin = False
             
