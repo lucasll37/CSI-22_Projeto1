@@ -13,8 +13,8 @@ class Game:
         pygame.init()
         pygame.mixer.init()
 
-        #self.scenes = [Scene4()]
-        self.scenes = [Scene0(), Scene1(), Scene2(), Scene4()]
+        self.scenes = [Scene4()]
+        # self.scenes = [Scene0(), Scene1(), Scene2(), Scene4()]
         self.window = Window(size, name, self.scenes)
 
     def start(self):
