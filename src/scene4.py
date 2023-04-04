@@ -35,18 +35,16 @@ class Scene4:
 
     def movePlayer(self):
         if self.playerMoveLeft:
-            self.player.sprite.rect[0] -= self.speedMovePlayer
-            self.parachute.sprite.rect[0] -= self.speedMovePlayer
-            if self.parachute.sprite.rect[0] < 9:
-                self.player.sprite.rect[0] = 9
-                self.parachute.sprite.rect[0] = 9
+            if self.player.sprite.rect[0] > 5:
+                self.player.sprite.rect[0] -= self.speedMovePlayer
+                self.parachute.sprite.rect[0] -= self.speedMovePlayer
+
 
         elif self.playerMoveRight:
-            self.player.sprite.rect[0] += self.speedMovePlayer
-            self.parachute.sprite.rect[0] += self.speedMovePlayer
-            if self.player.sprite.rect[0] > 1050:
-                self.player.sprite.rect[0] = 1050
-                self.parachute.sprite.rect[0] = 1050
+            if self.player.sprite.rect[0] < 1165:
+                self.player.sprite.rect[0] += self.speedMovePlayer
+                self.parachute.sprite.rect[0] += self.speedMovePlayer
+
 
     def moveBullet(self):
         self.shoot.sprite.rect[1] -= self.speedShot
@@ -70,8 +68,6 @@ class Scene4:
 
 
     def update(self):
-        print(f"parachutes: {self.parachute.sprite.rect[0]}")
-        print(f"player: {self.player.sprite.rect[0]}")
 
         if self.time == self.offsetTimeCloud:
             self.cloud2 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
@@ -80,7 +76,7 @@ class Scene4:
 
         if self.justBegin:
             pygame.mixer.music.stop()
-            pygame.mixer.music.load("sounds/plane.mp3")
+            pygame.mixer.music.load("sounds/ohio-59.mp3")
             pygame.mixer.music.play(-1)
             self.justBegin = False
 
