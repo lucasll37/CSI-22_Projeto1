@@ -106,8 +106,8 @@ class Scene4:
 
         self.player.collision(self.shoot.group)
             
-        # if self.time > 300:    
-        #     self.change_scene = True
+        if self.time > 1000:    
+            self.change_scene = True
 
         self.time += 1
 

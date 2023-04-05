@@ -5,6 +5,7 @@ from scene1 import Scene1
 from scene2 import Scene2
 from scene3 import Scene3
 from scene4 import Scene4
+from scene5 import Scene5
 
 class Game:
 
