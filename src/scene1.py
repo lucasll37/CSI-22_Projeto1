@@ -117,7 +117,7 @@ class Scene1:
                 self.planeMoveDown = False
 
 
-    def update(self):
+    def update(self, game):
         if self.justBegin:
             pygame.mixer.music.stop()
             pygame.mixer.music.load("sounds/plane.mp3")
@@ -151,7 +151,7 @@ class Scene1:
 
 
 
-    def events(self, events):
+    def events(self, events, game):
         for event in events:
             self.movePlaneEvent(event)
 

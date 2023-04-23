@@ -11,14 +11,14 @@ class Scene0:
         self.list_group = [self.background]
         self.justBegin = True
 
-    def update(self):
+    def update(self, game):
         if self.justBegin:
             pygame.mixer.music.stop()
             pygame.mixer.music.load("sounds/intro.mp3")
             pygame.mixer.music.play(-1)
             self.justBegin = False
 
-    def events(self, events):
+    def events(self, events, game):
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:

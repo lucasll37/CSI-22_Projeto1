@@ -14,14 +14,14 @@ class Scene3:
 
   
 
-    def update(self):
+    def update(self, game):
         if self.time > 350:    
             self.change_scene = True
 
         self.time += 1
 
 
-    def events(self, events):
+    def events(self, events, game):
         for event in events:
             pass
 

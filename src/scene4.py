@@ -23,6 +23,7 @@ class Scene4:
         self.speedMovePlayer = 7
         self.speedShot = 7
         self.fireXDirectionModRange = 5
+        self.timeClimaxGame = 1000
         self.fireXDirection = random.randrange(-self.fireXDirectionModRange, self.fireXDirectionModRange)
         self.playerMoveLeft = False
         self.playerMoveRight = False
@@ -67,7 +68,7 @@ class Scene4:
 
 
 
-    def update(self):
+    def update(self, game):
 
         if self.time == self.offsetTimeCloud:
             self.cloud2 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
@@ -106,13 +107,18 @@ class Scene4:
 
         self.player.collision(self.shoot.group)
             
-        if self.time > 1000:    
+        if self.time > self.timeClimaxGame:  
+            self.gameStatus = "win"  
+            self.change_scene = True
+
+        if self.player.killed:
+            self.gameStatus = "over"
             self.change_scene = True
 
         self.time += 1
 
 
-    def events(self, events):
+    def events(self, events, game):
         for event in events:
             self.movePlayerEvent(event)
 
