@@ -16,11 +16,11 @@ class Scene7:
 
         if self.justBegin:
             pygame.mixer.music.stop()
-            pygame.mixer.music.load("sounds/intro.mp3")
+            pygame.mixer.music.load("sounds/game_over_theme_ohio-59.mp3")
             pygame.mixer.music.play(-1)
             self.justBegin = False
 
-        if self.time > 500:
+        if self.time > 2000:
             self.change_scene = True
 
         self.time += 1

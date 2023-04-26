@@ -19,12 +19,12 @@ class Scene6:
 
         if self.justBegin:
             pygame.mixer.music.stop()
-            pygame.mixer.music.load("sounds/intro.mp3")
+            pygame.mixer.music.load("sounds/ending_theme_ohio-59.mp3")
             pygame.mixer.music.play(-1)
             self.video.preview()
             self.justBegin = False
 
-        if self.time > 1000:
+        if self.time > 2000:
             self.change_scene = True
 
         self.time += 1
