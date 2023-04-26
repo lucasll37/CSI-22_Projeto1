@@ -1,4 +1,5 @@
 import pygame
+from scene0 import Scene0
 from scene6 import Scene6
 from scene7 import Scene7
 
@@ -43,5 +44,8 @@ class Window:
 
             if gameStatus == 'loss':
                 self.scenes = [Scene7()]
+
+            if gameStatus == 'main':
+                self.scenes = [Scene0()]
 
             pygame.display.update()

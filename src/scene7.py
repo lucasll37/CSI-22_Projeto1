@@ -8,6 +8,7 @@ class Scene7:
 
         self.background = Obj("gameover", 1, None, 0, 0)
         self.change_scene = False
+        self.main = False
         self.justBegin = True
         self.time = 0
         self.list_group = [self.background]
@@ -25,9 +26,15 @@ class Scene7:
 
         self.time += 1
 
+        if self.main:
+            return 'main'
+
     def events(self, events, game):
         for event in events:
-            pass
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN and self.time > 200:
+                    self.change_scene = True
+                    self.main = True
 
     def draw(self, window):
         for group in self.list_group:

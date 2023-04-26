@@ -3,9 +3,9 @@ from obj import Obj
 
 
 class Scene0:
-    
+
     def __init__(self):
-       
+
         self.background = Obj("intro2", 1, None, 0, 0)
         self.change_scene = False
         self.list_group = [self.background]
@@ -28,5 +28,5 @@ class Scene0:
         for group in self.list_group:
             if group.timeFrame:
                 group.animation()
-            
+
             group.group.draw(window)
