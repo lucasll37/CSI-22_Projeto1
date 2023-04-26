@@ -134,7 +134,6 @@ class Scene4:
         if self.player.killed:
             self.change_scene = True
             return 'loss'
-            ...
 
         self.time += 1
 

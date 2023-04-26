@@ -19,7 +19,7 @@ class Scene7:
             pygame.mixer.music.play(-1)
             self.justBegin = False
             
-        if self.time > 500:    
+        if self.time > 2000:    
             self.change_scene = True
 
         self.time += 1
