@@ -26,15 +26,9 @@ class Scene7:
 
         self.time += 1
 
-        if self.main:
-            return 'main'
-
     def events(self, events, game):
         for event in events:
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN and self.time > 200:
-                    self.change_scene = True
-                    self.main = True
+            pass
 
     def draw(self, window):
         for group in self.list_group:

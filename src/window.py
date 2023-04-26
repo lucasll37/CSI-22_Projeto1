@@ -45,7 +45,4 @@ class Window:
             if gameStatus == 'loss':
                 self.scenes = [Scene7()]
 
-            if gameStatus == 'main':
-                self.scenes = [Scene0()]
-
             pygame.display.update()
