@@ -15,7 +15,8 @@ class Scene4:
         self.player = Player("tile", 20, 3, 600, 190)
         self.cloud1 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
         self.cloud2 = None
-        self.shoot = Obj("fire", 1, None, random.randrange(0, 1000), 720)
+        self.shoot1 = Obj("fire", 1, None, random.randrange(0, 1000), 720)
+        self.shoot2 = Obj("fire", 1, None, random.randrange(0, 1000), 720)
         self.change_scene = False
         self.justBegin = True
         self.time = 0
@@ -32,7 +33,9 @@ class Scene4:
         self.createFire = True
 
         self.list_group = [self.background, self.cloud1,
-                           self.parachute, self.player, self.shoot]
+                           self.parachute,
+                           self.player,
+                           self.shoot1, self.shoot2]
 
     def moveCloud(self):
         self.cloud1.sprite.rect[1] -= self.speedFall
@@ -51,8 +54,11 @@ class Scene4:
                 self.parachute.sprite.rect[0] += self.speedMovePlayer
 
     def moveBullet(self):
-        self.shoot.sprite.rect[1] -= self.speedShot
-        self.shoot.sprite.rect[0] -= random.randrange(-5, 5) + \
+        self.shoot1.sprite.rect[1] -= self.speedShot
+        self.shoot2.sprite.rect[1] -= self.speedShot
+        self.shoot1.sprite.rect[0] -= random.randrange(-5, 5) + \
+            self.fireXDirection
+        self.shoot2.sprite.rect[0] -= random.randrange(-5, 5) + \
             self.fireXDirection
 
     def movePlayerEvent(self, event):
@@ -82,7 +88,9 @@ class Scene4:
             self.cloud2 = Cloud(
                 "cloud", 1, None, random.randrange(0, 1000), 850)
             self.list_group = [self.background, self.cloud1,
-                               self.cloud2, self.parachute, self.player, self.shoot]
+                               self.cloud2, self.parachute,
+                               self.player, self.shoot1,
+                               self.shoot2]
 
         if self.justBegin:
             pygame.mixer.music.stop()
@@ -95,34 +103,55 @@ class Scene4:
             self.cloud1 = Cloud(
                 "cloud", 1, None, random.randrange(0, 1000), 850)
             self.list_group = [self.background, self.cloud1,
-                               self.cloud2, self.parachute, self.player, self.shoot]
+                               self.cloud2,
+                               self.parachute,
+                               self.player, self.shoot1,
+                               self.shoot2]
 
         if self.cloud2 and self.cloud2.sprite.rect[1] < -200:
             self.cloud2.sprite.kill()
             self.cloud2 = Cloud(
                 "cloud", 1, None, random.randrange(0, 1000), 850)
             self.list_group = [self.background, self.cloud1,
-                               self.cloud2, self.parachute, self.player, self.shoot]
+                               self.cloud2, self.parachute,
+                               self.player, self.shoot1, self.shoot2]
 
         if self.createFire:
-            if self.shoot.sprite.rect[1] < -100:
-                self.shoot.sprite.kill()
-                self.shoot = Obj(
+            if self.shoot1.sprite.rect[1] < -100:
+                self.shoot1.sprite.kill()
+                self.shoot1 = Obj(
                     "fire", 1, None, random.randrange(0, 1000), 720)
                 self.fireXDirection = random.randrange(
                     -self.fireXDirectionModRange, self.fireXDirectionModRange)
                 if self.cloud2:
                     self.list_group = [self.background, self.cloud1,
-                                       self.cloud2, self.parachute, self.player, self.shoot]
+                                       self.cloud2, self.parachute,
+                                       self.player, self.shoot1, self.shoot2]
                 else:
                     self.list_group = [
-                        self.background, self.cloud1, self.parachute, self.player, self.shoot]
+                        self.background, self.cloud1, self.parachute,
+                        self.player, self.shoot1, self.shoot2]
+            if self.shoot2.sprite.rect[1] < -100:
+                self.shoot2.sprite.kill()
+                self.shoot2 = Obj(
+                    "fire", 1, None, random.randrange(0, 1000), 720)
+                self.fireXDirection = random.randrange(
+                    -self.fireXDirectionModRange, self.fireXDirectionModRange)
+                if self.cloud2:
+                    self.list_group = [self.background, self.cloud1,
+                                       self.cloud2, self.parachute,
+                                       self.player, self.shoot1, self.shoot2]
+                else:
+                    self.list_group = [
+                        self.background, self.cloud1, self.parachute,
+                        self.player, self.shoot1, self.shoot2]
 
         self.moveCloud()
         self.movePlayer()
         self.moveBullet()
 
-        self.player.collision(self.shoot.group)
+        self.player.collision(self.shoot1.group)
+        self.player.collision(self.shoot2.group)
 
         if self.time > self.timeClimaxGame:
             self.createFire = False
@@ -138,7 +167,7 @@ class Scene4:
                 self.list_group = [self.background,
                                    self.cloud2, self.parachute, self.player]
 
-            if self.time > self.timeClimaxGame + 600:
+            if self.time > self.timeClimaxGame + 200:
                 self.change_scene = True
                 return 'win'
 

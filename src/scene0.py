@@ -23,7 +23,6 @@ class Scene0:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     self.change_scene = True
-                    return ' '
 
     def draw(self, window):
         for group in self.list_group:

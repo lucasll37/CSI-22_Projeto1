@@ -1,5 +1,4 @@
 import pygame
-from scene0 import Scene0
 from scene6 import Scene6
 from scene7 import Scene7
 

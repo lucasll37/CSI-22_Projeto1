@@ -24,7 +24,7 @@ class Scene6:
             self.video.preview()
             self.justBegin = False
 
-        if self.time > 2000:
+        if self.time > 4800:
             self.change_scene = True
 
         self.time += 1
