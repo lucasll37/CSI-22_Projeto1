@@ -7,7 +7,7 @@ class Scene3:
     
     def __init__(self):
          
-        self.background = Obj("continua", 1, None, 0, 0)
+        self.background = Obj("instructions", 1, None, 0, 0)
         self.change_scene = False
         self.time = 0
         self.list_group = [self.background]
@@ -15,7 +15,7 @@ class Scene3:
   
 
     def update(self, game):
-        if self.time > 350:    
+        if self.time > 400:    
             self.change_scene = True
 
         self.time += 1

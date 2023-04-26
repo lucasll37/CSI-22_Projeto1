@@ -17,7 +17,7 @@ class Game:
         pygame.mixer.init()
 
         self.gameStatus = "onPlay"
-        self.scenes = [Scene0(), Scene1(), Scene2(), Scene4(), Scene6(), Scene7()]
+        self.scenes = [Scene4(), Scene6(), Scene7()]
         self.window = Window(self, size, name, self.scenes)
 
     def start(self):

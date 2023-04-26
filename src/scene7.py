@@ -6,7 +6,7 @@ class Scene7:
     
     def __init__(self):
 
-        self.background = Obj("white", 1, None, 0, 0)
+        self.background = Obj("gameover", 1, None, 0, 0)
         self.change_scene = False
         self.justBegin = True
         self.time = 0
@@ -31,8 +31,9 @@ class Scene7:
         # if self.time > 600:    
         #     self.change_scene = True
 
-        # if game.gameStatus != "win":
-        #     self.change_scene = True
+        if game.gameStatus != "win":
+            print(game.gameStatus) #####
+            self.change_scene = True
 
         self.time += 1
 

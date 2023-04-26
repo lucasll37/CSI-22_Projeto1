@@ -5,6 +5,7 @@ class Obj:
     def __init__(self, imageBase, frames, timeFrame, x, y):
         self.group = pygame.sprite.Group()
         self.sprite = pygame.sprite.Sprite(self.group)
+        self.imageAux = imageBase
         self.imageBase = imageBase
         self.frames = frames
         self.currentFrame = 0

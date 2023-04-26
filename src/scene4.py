@@ -20,14 +20,17 @@ class Scene4:
         self.time = 0
         self.offsetTimeCloud = 130
         self.speedFall = 3
-        self.speedMovePlayer = 7
-        self.speedShot = 7
+        self.speedMovePlayer = 6
+        self.speedShot = 6
         self.fireXDirectionModRange = 5
-        self.timeClimaxGame = 1000
+        self.timeClimaxGame = 4800
         self.fireXDirection = random.randrange(-self.fireXDirectionModRange, self.fireXDirectionModRange)
         self.playerMoveLeft = False
         self.playerMoveRight = False
+
         self.list_group = [self.background, self.cloud1, self.parachute, self.player, self.shoot]
+
+
 
     def moveCloud(self):
         self.cloud1.sprite.rect[1] -= self.speedFall 
@@ -54,9 +57,11 @@ class Scene4:
     def movePlayerEvent(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
+                self.player.flipLeft()
                 self.playerMoveLeft = True
                     
             elif event.key == pygame.K_RIGHT:
+                self.player.flipRight()
                 self.playerMoveRight = True
 
         elif event.type == pygame.KEYUP:
@@ -69,6 +74,10 @@ class Scene4:
 
 
     def update(self, game):
+        if self.time % 600 == 0:
+            self.speedFall += 1
+            self.speedMovePlayer += 1
+            self.speedShot += 1
 
         if self.time == self.offsetTimeCloud:
             self.cloud2 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
@@ -109,11 +118,13 @@ class Scene4:
             
         if self.time > self.timeClimaxGame:  
             self.gameStatus = "win"  
+            print(self.gameStatus)
             self.change_scene = True
 
         if self.player.killed:
             self.gameStatus = "over"
-            self.change_scene = True
+            print(self.gameStatus)
+            # self.change_scene = True
 
         self.time += 1
 
