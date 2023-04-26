@@ -1,6 +1,7 @@
 import pygame
 from obj import Obj
 
+
 class Plane(Obj):
 
     def __init__(self, imageBase, frames, timeFrame, x, y):
@@ -13,7 +14,8 @@ class Plane(Obj):
             self.crash = True
             self.imageBase = "planecrash"
             self.soundCollision.play()
-            self.sprite.image = pygame.image.load(f"assets/{self.imageBase}_{self.currentFrame}.png")
+            self.sprite.image = pygame.image.load(
+                f"assets/{self.imageBase}_{self.currentFrame}.png")
             self.soundCatch = pygame.mixer.Sound("sounds/bomba.mp3")
 
             pygame.mixer.music.stop()

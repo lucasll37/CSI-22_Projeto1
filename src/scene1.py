@@ -1,7 +1,9 @@
+import random
+
 import pygame
 from obj import Obj
 from plane import Plane
-import random
+
 
 class Scene1:
     
