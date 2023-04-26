@@ -2,8 +2,6 @@
 
 python >= 3.7.0
 
-git
-
 #### Estrutura de Diretório
 
 ```
