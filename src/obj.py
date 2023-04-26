@@ -1,5 +1,6 @@
 import pygame
 
+
 class Obj:
 
     def __init__(self, imageBase, frames, timeFrame, x, y):
@@ -9,7 +10,8 @@ class Obj:
         self.imageBase = imageBase
         self.frames = frames
         self.currentFrame = 0
-        self.sprite.image = pygame.image.load(f"assets/{self.imageBase}_{self.currentFrame}.png")
+        self.sprite.image = pygame.image.load(
+            f"assets/{self.imageBase}_{self.currentFrame}.png")
         self.sprite.rect = self.sprite.image.get_rect()
         self.sprite.rect[0] = x
         self.sprite.rect[1] = y
@@ -23,5 +25,6 @@ class Obj:
             self.currentFrame += 1
             if self.currentFrame >= self.frames:
                 self.currentFrame = 0
-        
-            self.sprite.image = pygame.image.load(f"assets/{self.imageBase}_{self.currentFrame}.png")
+
+            self.sprite.image = pygame.image.load(
+                f"assets/{self.imageBase}_{self.currentFrame}.png")

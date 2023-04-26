@@ -1,9 +1,11 @@
 import pygame
+
 from scene0 import Scene0
 from scene1 import Scene1
 from scene2 import Scene2
 from scene3 import Scene3
 from scene4 import Scene4
+from scene6 import Scene6
 from scene8 import Scene8
 from window import Window
 

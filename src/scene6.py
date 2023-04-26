@@ -1,5 +1,6 @@
 import moviepy.editor
 import pygame
+
 from obj import Obj
 
 
@@ -14,6 +15,8 @@ class Scene6:
         self.list_group = []
         # self.list_group = [self.background]
         self.video = moviepy.editor.VideoFileClip("./assets/final_0.mp4")
+        self.clip = self.video.subclip(0, 12)
+        self.clip = self.clip.speedx(0.2)
 
     def update(self, game):
 
@@ -21,7 +24,7 @@ class Scene6:
             pygame.mixer.music.stop()
             pygame.mixer.music.load("sounds/ending_theme_ohio-59.mp3")
             pygame.mixer.music.play(-1)
-            self.video.preview()
+            self.clip.preview()
             self.justBegin = False
 
         if self.time > 4800:

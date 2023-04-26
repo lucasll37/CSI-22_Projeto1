@@ -1,5 +1,6 @@
 import moviepy.editor
 import pygame
+
 from obj import Obj
 
 
@@ -23,7 +24,7 @@ class Scene8:
             self.video.preview()
             self.justBegin = False
 
-        if self.time > 1000:
+        if self.time > 200:
             self.change_scene = True
 
         self.time += 1
