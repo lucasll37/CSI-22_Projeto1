@@ -6,7 +6,6 @@ class Player(Obj):
     def __init__(self, imageBase, frames, timeFrame, x, y):
         super().__init__(imageBase, frames, timeFrame, x, y)
         self.killed = False
-        self.aux = True
         self.soundCollision = pygame.mixer.Sound("sounds/bomba.mp3")
 
     def collision(self, group):
@@ -15,15 +14,9 @@ class Player(Obj):
             self.soundCollision.play()
 
     def flipRight(self):
-        self.imageBase = self.imageAux + '_R'
-        if not self.aux:
-            self.sprite.rect[0] -= 0
-            self.aux = True
+        pass
 
     def flipLeft(self):
-        self.imageBase = self.imageAux
-        if self.aux:
-            self.sprite.rect[0] += 0
-            self.aux = False
+        pass
 
 

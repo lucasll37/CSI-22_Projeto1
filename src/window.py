@@ -1,4 +1,6 @@
 import pygame
+from scene6 import Scene6
+from scene7 import Scene7
 
 class Window:
     
@@ -33,7 +35,13 @@ class Window:
             events = pygame.event.get()
             self.globalEvents(events)
             self.activeScene.events(events, self.game)
-            self.activeScene.update(self.game)
+            gameStatus = self.activeScene.update(self.game)
             self.activeScene.draw(self.window)
+
+            if gameStatus == 'win':
+                self.scenes = [Scene6()]
+
+            if gameStatus == 'loss':
+                self.scenes = [Scene6()]
 
             pygame.display.update()

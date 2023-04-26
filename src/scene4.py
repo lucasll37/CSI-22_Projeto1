@@ -4,7 +4,6 @@ from cloud import Cloud
 from player import Player
 import random
 
-
 class Scene4:
     
     def __init__(self):
@@ -27,6 +26,7 @@ class Scene4:
         self.fireXDirection = random.randrange(-self.fireXDirectionModRange, self.fireXDirectionModRange)
         self.playerMoveLeft = False
         self.playerMoveRight = False
+        self.createCloud = True
 
         self.list_group = [self.background, self.cloud1, self.parachute, self.player, self.shoot]
 
@@ -83,31 +83,31 @@ class Scene4:
             self.cloud2 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
             self.list_group = [self.background, self.cloud1, self.cloud2, self.parachute, self.player, self.shoot]
 
+        if self.createCloud:
+            if self.justBegin:
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load("sounds/ohio-59.mp3")
+                pygame.mixer.music.play(-1)
+                self.justBegin = False
 
-        if self.justBegin:
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load("sounds/ohio-59.mp3")
-            pygame.mixer.music.play(-1)
-            self.justBegin = False
-
-        if self.cloud1.sprite.rect[1] < -200:
-            self.cloud1.sprite.kill()
-            self.cloud1 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
-            self.list_group = [self.background, self.cloud1, self.cloud2, self.parachute, self.player, self.shoot]
-
-        if self.cloud2 and self.cloud2.sprite.rect[1] < -200:
-            self.cloud2.sprite.kill()
-            self.cloud2 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
-            self.list_group = [self.background, self.cloud1, self.cloud2, self.parachute, self.player, self.shoot]
-
-        if self.shoot.sprite.rect[1] < -100:
-            self.shoot.sprite.kill()
-            self.shoot = Obj("fire", 1, None, random.randrange(0, 1000), 720)
-            self.fireXDirection = random.randrange(-self.fireXDirectionModRange, self.fireXDirectionModRange)
-            if self.cloud2:
+            if self.cloud1.sprite.rect[1] < -200:
+                self.cloud1.sprite.kill()
+                self.cloud1 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
                 self.list_group = [self.background, self.cloud1, self.cloud2, self.parachute, self.player, self.shoot]
-            else:
-                self.list_group = [self.background, self.cloud1, self.parachute, self.player, self.shoot]
+
+            if self.cloud2 and self.cloud2.sprite.rect[1] < -200:
+                self.cloud2.sprite.kill()
+                self.cloud2 = Cloud("cloud", 1, None, random.randrange(0, 1000), 850)
+                self.list_group = [self.background, self.cloud1, self.cloud2, self.parachute, self.player, self.shoot]
+
+            if self.shoot.sprite.rect[1] < -100:
+                self.shoot.sprite.kill()
+                self.shoot = Obj("fire", 1, None, random.randrange(0, 1000), 720)
+                self.fireXDirection = random.randrange(-self.fireXDirectionModRange, self.fireXDirectionModRange)
+                if self.cloud2:
+                    self.list_group = [self.background, self.cloud1, self.cloud2, self.parachute, self.player, self.shoot]
+                else:
+                    self.list_group = [self.background, self.cloud1, self.parachute, self.player, self.shoot]
 
 
         self.moveCloud()
@@ -116,15 +116,18 @@ class Scene4:
 
         self.player.collision(self.shoot.group)
             
-        if self.time > self.timeClimaxGame:  
-            self.gameStatus = "win"  
-            print(self.gameStatus)
-            self.change_scene = True
+        if self.time > self.timeClimaxGame:
+            self.createCloud = False
+            self.list_group = [self.background, self.parachute, self.player]
+
+            if self.time > self.timeClimaxGame + 1000:
+                self.change_scene = True
+                return 'win' 
 
         if self.player.killed:
-            self.gameStatus = "over"
-            print(self.gameStatus)
             # self.change_scene = True
+            # return 'loss'
+            ...
 
         self.time += 1
 

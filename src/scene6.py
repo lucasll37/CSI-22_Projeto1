@@ -1,26 +1,17 @@
 import pygame
 from obj import Obj
-import random
-
+import moviepy.editor
 class Scene6:
     
     def __init__(self):
 
-        self.background = Obj("gameover", 1, None, 0, 0)
+        # self.background = Obj("gameover", 1, None, 0, 0)
         self.change_scene = False
         self.justBegin = True
         self.time = 0
-        self.list_group = [self.background]
-
-
-    def PlayAgain(self, event, game):
-        print(game.gameStatus)
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                pass
-                    
-            else:
-                self.change_scene = True
+        self.list_group = []
+        # self.list_group = [self.background]
+        self.video = moviepy.editor.VideoFileClip("./assets/final_0.mp4")
 
     def update(self, game):
         
@@ -28,13 +19,10 @@ class Scene6:
             pygame.mixer.music.stop()
             pygame.mixer.music.load("sounds/intro.mp3")
             pygame.mixer.music.play(-1)
+            self.video.preview()
             self.justBegin = False
             
-        # if self.time > 300:    
-        #     self.change_scene = True
-
-        if game.gameStatus != "over":
-            print(game.gameStatus) ##########
+        if self.time > 1000:    
             self.change_scene = True
 
         self.time += 1
@@ -42,7 +30,7 @@ class Scene6:
 
     def events(self, events, game):
         for event in events:
-            self.PlayAgain(event, game)
+            pass
 
     def draw(self, window):
         for group in self.list_group:
