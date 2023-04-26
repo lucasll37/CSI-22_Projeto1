@@ -1,6 +1,7 @@
 import pygame
 from obj import Obj
 
+
 class Player(Obj):
 
     def __init__(self, imageBase, frames, timeFrame, x, y):
@@ -18,5 +19,3 @@ class Player(Obj):
 
     def flipLeft(self):
         pass
-
-

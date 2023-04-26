@@ -1,8 +1,10 @@
+import moviepy.editor
 import pygame
 from obj import Obj
-import moviepy.editor
+
+
 class Scene6:
-    
+
     def __init__(self):
 
         # self.background = Obj("gameover", 1, None, 0, 0)
@@ -14,19 +16,18 @@ class Scene6:
         self.video = moviepy.editor.VideoFileClip("./assets/final_0.mp4")
 
     def update(self, game):
-        
+
         if self.justBegin:
             pygame.mixer.music.stop()
             pygame.mixer.music.load("sounds/ending_theme_ohio-59.mp3")
             pygame.mixer.music.play(-1)
             self.video.preview()
             self.justBegin = False
-            
-        if self.time > 2000:    
+
+        if self.time > 2000:
             self.change_scene = True
 
         self.time += 1
-
 
     def events(self, events, game):
         for event in events:
@@ -36,5 +37,5 @@ class Scene6:
         for group in self.list_group:
             if group.timeFrame:
                 group.animation()
-            
+
             group.group.draw(window)

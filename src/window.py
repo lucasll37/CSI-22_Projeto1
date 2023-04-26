@@ -1,11 +1,13 @@
 import pygame
+from scene0 import Scene0
 from scene6 import Scene6
 from scene7 import Scene7
 
+
 class Window:
-    
+
     def __init__(self, game, size, name, scenes):
-        
+
         self.window = pygame.display.set_mode(size)
         self.title = pygame.display.set_caption(name)
         self.game = game
@@ -17,7 +19,7 @@ class Window:
         for event in events:
             if event.type == pygame.QUIT:
                 self.loop = False
-            
+
     def update(self):
         while self.loop:
             self.fps.tick(60)
@@ -30,7 +32,6 @@ class Window:
             if not self.activeScene:
                 self.loop = False
                 continue
-                
 
             events = pygame.event.get()
             self.globalEvents(events)
